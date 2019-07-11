@@ -17,8 +17,11 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@test')->name('test');
-Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::match(['get', 'post'], '/login', 'AuthController@login')->name('login');
 Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware', 'prefix' => 'admin'], function(){
+    Route::get('/', 'AdminController@index')->name('admin');
+});
