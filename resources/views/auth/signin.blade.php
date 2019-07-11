@@ -53,7 +53,7 @@
     <div id="register" class="animate form registration_form">
       <section class="login_content">
         <form method="POST" action="{{ route('register') }}">
-          {% csrf_token %}
+          @csrf
           <h1>Create Account</h1>
           <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="Name" required="" />

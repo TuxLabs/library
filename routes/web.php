@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@test')->name('test');
 
 Route::match(['get', 'post'], '/login', 'AuthController@login')->name('login');
@@ -24,4 +20,7 @@ Route::get('/logout', 'AuthController@logout')->name('logout');
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware', 'prefix' => 'admin'], function(){
     Route::get('/', 'AdminController@index')->name('admin');
+    Route::group(['prefix' => 'books'], function(){
+        Route::get('/list', 'BookController@listBook')->name('books.list');
+    });
 });
