@@ -16,27 +16,21 @@
     <thead>
     <tr>
       <th>ID</th>
-      <th>Judul Buku</th>
-      <th>Kode Buku</th>
-      <th>Kategori</th>
-      <th>Pengarang</th>
-      <th>Penerbit</th>
-      <th>Stok</th>
+      <th>Nama Kategori</th>
+      <th>Dibuat</th>
+      <th>Aksi</th>
     </tr>
     </thead>
 
     <tbody>
-    @foreach($books as $b)
+    @foreach($categories as $c)
     <tr>
-      <td>{{ $b->id }}</td>
-      <td>{{ $b->title }}</td>
-      <td>{{ $b->code }}</td>
-      <td>{{ $b->category_id }}</td>
-      <td>{{ $b->author }}</td>
-      <th>{{ $b->published_by }}</th>
-      <th>{{ $b->stock }}</th>
-    @endforeach
+      <td>{{ $c->id }}</td>
+      <td>{{ $c->name }}</td>
+      <td>{{ $c->created_at }}</td>
+      <td>{{ $c->name }}</td>
     </tr>
+    @endforeach
     </tbody>
     </table>
     </div>
@@ -51,33 +45,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Tambah Buku Baru</h4>
+        <h4 class="modal-title">Tambah Kategoru Buku</h4>
       </div>
       <div class="modal-body">
-        <form action="{{ route('books.add') }}" method="POST" id="form">
+        <form action="{{ route('book-categories.add') }}" method="POST" id="form">
         @csrf
           <div class="form-group">
-            <input class="form-control" type="text" name="title" placeholder="Judul Buku">
-          </div>
-          <div class="form-group">
-            <select class="form-control" name="category_id" id="category_id">
-              <option value="">--- Pilih Kategori ---</option>
-              @foreach(\App\BookCategory::all() as $c)
-              <option value="{{ $c->id }}">{{ $c->name }}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="text" name="author" placeholder="Pengarang">
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="text" name="published_by" placeholder="Penerbit">
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="text" name="stock" placeholder="Stok">
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="text" name="code" placeholder="Kode Buku">
+            <input class="form-control" type="text" name="name" placeholder="Kategori">
           </div>
         </form>
       </div>

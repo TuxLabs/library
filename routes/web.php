@@ -22,5 +22,11 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware', 'prefix' =>
     Route::get('/', 'AdminController@index')->name('admin');
     Route::group(['prefix' => 'books'], function(){
         Route::get('/list', 'BookController@listBook')->name('books.list');
+        Route::post('/add', 'BookController@addBook')->name('books.add');
+    });
+
+    Route::group(['prefix' => 'book-categories'], function(){
+        Route::get('/list', 'BookController@listBookCategory')->name('book-categories.list');
+        Route::post('/add', 'BookController@addBookCategory')->name('book-categories.add');
     });
 });
