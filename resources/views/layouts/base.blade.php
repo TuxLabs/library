@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="{{ URL::asset('css/jqvmap.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/daterangepicker.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.min.css') }}">
+<link rel="shortcut icon" href="{{ URL::asset('img/icon.png') }}" type="image/x-icon">
+<link rel="icon" href="{{ URL::asset('img/icon.png') }}" type="image/x-icon">
 </head>
 
 <body class="nav-md">
@@ -25,7 +27,7 @@
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-          <a href="index.html" class="site_title"><i class="fa fa-book"></i> <span>Library UTL</span></a>
+          <a href="{{ route('root') }}" class="site_title"><i class="fa fa-book"></i> <span>Library UTL</span></a>
         </div>
         <div class="clearfix"></div>
 

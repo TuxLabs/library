@@ -11,20 +11,26 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('root');
 Route::get('/test', 'HomeController@test')->name('test');
 
+//authentication
 Route::match(['get', 'post'], '/login', 'AuthController@login')->name('login');
 Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
+Route::get('/search', 'HomeController@search')->name('search');
 
+//cms
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware', 'prefix' => 'admin'], function(){
     Route::get('/', 'AdminController@index')->name('admin');
+
+    //books
     Route::group(['prefix' => 'books'], function(){
         Route::get('/list', 'BookController@listBook')->name('books.list');
         Route::post('/add', 'BookController@addBook')->name('books.add');
     });
 
+    //book categories
     Route::group(['prefix' => 'book-categories'], function(){
         Route::get('/list', 'BookController@listBookCategory')->name('book-categories.list');
         Route::post('/add', 'BookController@addBookCategory')->name('book-categories.add');

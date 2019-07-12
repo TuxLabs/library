@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class MemberController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,11 +26,4 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function test(){
-        return view('auth.signin');
-    }
-
-    public function search(){
-        return view('search-result');
-    }
 }
