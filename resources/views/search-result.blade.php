@@ -28,7 +28,7 @@
     @else
       <li><a href="{{ route('login') }}#signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="{{ route('login') }}#signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    @endif><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    @endif
     </ul>
   </div>
 </nav>

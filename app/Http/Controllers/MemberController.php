@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class MemberController extends Controller
 {
@@ -24,6 +25,11 @@ class MemberController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function listMember(){
+        $members = User::all();
+        return view('admin.user.list')->with('members', $members);
     }
 
 }

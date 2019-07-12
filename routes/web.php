@@ -35,4 +35,14 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware', 'prefix' =>
         Route::get('/list', 'BookController@listBookCategory')->name('book-categories.list');
         Route::post('/add', 'BookController@addBookCategory')->name('book-categories.add');
     });
+
+    //loan atau peminjaman
+    Route::group(['prefix' => 'loans'], function(){
+        Route::get('/list', 'LoanController@listLoan')->name('loans.list');
+        Route::post('/add', 'LoanController@addLoan')->name('loans.add');
+    });
+
+    Route::group(['prefix' => 'users'], function(){
+        Route::get('/list', 'MemberController@listMember')->name('users.list');
+    });
 });
