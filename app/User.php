@@ -48,9 +48,16 @@ class User extends Authenticatable
         }
         
         if($last){
-            $member_id_last = (int) substr($last->member_id, -6);
-            $new_member_id = $member_id_last + 1;
-            $member_id = "$code$new_member_id";
+            $member_id_last = substr($last->member_id, -6);
+            $zero_code = strlen($member_id_last) - strlen((int) $member_id_last);
+
+            $zero_code_str = '';
+            for($i = 0; $i < $zero_code; $i++){
+                $zero_code_str .= "0";
+            }
+
+            $new_member_id = (int) $member_id_last + 1;
+            $member_id = "$code$zero_code_str$new_member_id";
         }else{
             $member_id = "$code$start_member_id";
         }
