@@ -53,7 +53,7 @@
     </thead>
 
     <tbody>
-    @foreach( \App\Book::all() as $b)
+    @foreach( $books as $b)
     <tr>
       <td>{{ $b->id }}</td>
       <td>{{ $b->title }}</td>

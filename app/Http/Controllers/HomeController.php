@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Book;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,26 @@ class HomeController extends Controller
     }
 
     public function search(){
-        return view('search-result');
+        $books = \App\Book::all();
+        return view('search-result')->with('books', $books);
+    }
+
+    public function searchEverything(){
+        if(isset($_GET['q'])){
+            $q = "%".$_GET['q']."%";
+            $books = Book::where(function ($query) use ($q) {
+                $query->where('title', 'like', $q)
+                      ->orWhere('author', 'like', $q);
+            })->get();
+        }else{
+            $books = \App\Book::all();
+        }
+       
+
+        
+
+        // dd($books);
+
+        return view('search-result')->with('books', $books);
     }
 }

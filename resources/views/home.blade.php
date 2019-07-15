@@ -45,21 +45,19 @@
         <div class="input-group">
             <div class="input-group-btn search-panel">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span id="search_concept">Contains</span> <span class="caret"></span>
+                    <span id="search_concept">Anything</span> <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#contains">Contains</a></li>
-                    <li><a href="#its_equal">It's equal</a></li>
-                    <li><a href="#greather_than">Greather than &gt;</a></li>
-                    <li><a href="#less_than">Less than &lt; </a></li>
-                    <li class="divider"></li>
+                    <!-- <li><a href="#contains">Author</a></li>
+                    <li><a href="#its_equal">Book</a></li>
+                    <li class="divider"></li> -->
                     <li><a href="#all">Anything</a></li>
                 </ul>
             </div>
             <input type="hidden" name="search_param" value="contains" id="search_param">         
-            <input type="text" class="form-control" name="x" placeholder="Search term...">
+            <input type="text" id="search-input" class="form-control" name="x" placeholder="Search term...">
             <span class="input-group-btn search-panel">
-                <button class="btn btn-default" type="button">Search <span class="glyphicon glyphicon-search"></span></button>
+                <button class="btn btn-default" id="search-btn" type="button">Search <span class="glyphicon glyphicon-search"></span></button>
             </span>
         </div>
         <h1 style="margin-top: 20px; text-align:center">Universitas Ternak Lele</h1>
@@ -69,3 +67,14 @@
 </body>
 <script src="{{ URL::asset('js/jquery.min.js') }}" ></script>
 <script src="{{ URL::asset('js/bootstrap.min.js') }}" ></script>
+<script>
+  $('#search-btn').click(function(){
+    window.location.href = "{{ route('search-everything') }}?q="+$('#search-input').val();
+  })
+
+  $("#search-input").keypress(function(event) { 
+      if (event.keyCode === 13) { 
+          $("#search-btn").click(); 
+      } 
+  }); 
+</script>
