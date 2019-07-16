@@ -20,6 +20,8 @@ Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/search-everything', 'HomeController@searchEverything')->name('search-everything');
+Route::get('/categories', 'HomeController@categories')->name('categories');
+Route::get('/all-books', 'HomeController@allBooks')->name('all-books');
 
 //cms
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware', 'prefix' => 'admin'], function(){

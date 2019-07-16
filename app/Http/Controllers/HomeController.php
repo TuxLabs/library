@@ -46,12 +46,19 @@ class HomeController extends Controller
         }else{
             $books = \App\Book::all();
         }
-       
-
-        
-
-        // dd($books);
 
         return view('search-result')->with('books', $books);
+    }
+
+    public function categories(){
+        $categories = \App\BookCategory::all();
+
+        return view('book-categories')->with('categories', $categories);
+    }
+
+    public function allBooks(){
+        $books = \App\Book::all();
+
+        return view('all-books')->with('books', $books);
     }
 }

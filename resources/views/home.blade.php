@@ -21,8 +21,8 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="{{ route('root') }}">Home</a></li>
       <li><a href="{{ route('search') }}">Cari</a></li>
-      <li><a href="#">Kategori</a></li>
-      <li><a href="#">Semua Buku</a></li>
+      <li><a href="{{ route('categories') }}">Kategori</a></li>
+      <li><a href="{{ route('all-books') }}">Semua Buku</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
     @if(Auth::check())
